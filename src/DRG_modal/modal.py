@@ -257,8 +257,8 @@ def pick_poles(H, f, poles):
 
     btn_cid = fig.canvas.mpl_connect('button_press_event', on_click)
     key_cid = fig.canvas.mpl_connect('key_press_event', on_key)
-    plt.show(block=True) 
-    matplotlib.use("module://matplotlib_inline.backend_inline")
+    plt.show(block=True)
+    # matplotlib.use("module://matplotlib_inline.backend_inline")
 
     # format outputs
     pole_idx = np.array(pole_idx)[np.argsort(all_wn[pole_idx])] # sort by nf
