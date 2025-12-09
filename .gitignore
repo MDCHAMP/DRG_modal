@@ -52,3 +52,4 @@ coverage.xml
 *.py,cover
 *.egg-info
 *.code-workspace
+misc/*

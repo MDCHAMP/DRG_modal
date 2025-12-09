@@ -185,7 +185,7 @@ def PLSCE(H, f, fs, n_modes):
         A = np.linalg.solve(M[:P*i,:P*i],M[:P*i,P*i:P*(i+1)]) # Pi, P
         C = np.block([[np.zeros((P*(i-1),P)), np.eye(P*(i-1))],[A.T]]) #iP, iP
         dlam, V = np.linalg.eig(C)
-        poles[i] = np.log(dlam)*fs, (V[:, :P] /  ((V[:, :P, None]).max(1)))# r, P
+        poles[i] = np.log(dlam)*fs, (V[-P:, :] /  ((V[-P:, None]).max(0))).T# r, P
     
     return poles
 
