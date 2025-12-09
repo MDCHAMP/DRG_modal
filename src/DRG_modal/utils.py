@@ -15,8 +15,13 @@ def load_tap_test_data(fname):
 
     for i in range(taps):
         x.append(obj[f"Hammer_tap_{i+1}"])
-        y.append([obj[f"{channel}_tap_{i+1}"] for channel in channels])
-        
+        y.append([obj[f"{channel}_tap_{i+1}"][:] for channel in channels])
+    
+    # Handle the case that not all taps are same length
+    tot = min([len(a) for a in x])
+    x = [a[:tot] for a in x]
+    y = [[b[:tot] for b in a] for a in y]
+
     x = np.array(x)[:, None]
     y = np.array(y)
 
